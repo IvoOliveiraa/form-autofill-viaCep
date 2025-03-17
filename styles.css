@@ -44,7 +44,28 @@
       transform: rotate(1turn);
     }
   }
-  
+
+  .message{
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    font-weight: 600;
+    font-size: 17px;
+    width: 300px;
+    height: 150px;
+    text-align: center;
+    align-content: center;
+    border-radius: 5px;
+  }
+
+  .message #btn{
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: transparent;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 16px;
+  }
+
   .hide {
     display: none !important;
   }

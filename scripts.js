@@ -1,6 +1,7 @@
 const addressForm = document.querySelector("#address-form");
 const cepInput = document.querySelector("#cep");
 const formInputs = document.querySelectorAll("[data-input]");
+const closeBtn = document.querySelector("#btn");
 
 const addressFields = {
   address: document.querySelector("#address"),
@@ -40,14 +41,22 @@ const getAddress = async (cep) =>{
 };
 
 const toggleLoader = () =>{
-  document.querySelector("#loader").classList.toggle('hide')
-  document.querySelector("#loading").classList.toggle('hide')
-}
+  document.querySelector("#loader").classList.toggle('hide');
+  document.querySelector("#loading").classList.toggle('hide');
+};
 
-const resetForm = () =>{
+const resetForm = (msg) =>{
   addressForm.reset();
-  toggleDisabled()
-}
+  toggleDisabled();
+  toggleLoader();
+  toggleMessage(msg);
+};
+
+const toggleMessage = (msg) =>{
+  document.querySelector("#msg").classList.toggle('hide');
+  document.querySelector("#msg p").textContent = msg;
+  document.querySelector("#loader").classList.toggle('hide');
+};
 
 const toggleDisabled = (disable = true) =>{
   formInputs.forEach((input) => input.toggleAttribute('disabled', disable));
@@ -60,3 +69,8 @@ const allAddressFields = (data) =>{
   addressFields.neighborhood.value = data.bairro || "";
   addressFields.region.value = data.uf || "";
 };
+
+closeBtn.addEventListener('click', () => {
+  toggleMessage();
+  toggleLoader();
+});
